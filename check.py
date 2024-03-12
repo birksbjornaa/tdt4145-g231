@@ -14,6 +14,10 @@ cursor.execute('''
     )
 ''')
 
+# cursor.execute(''' INSERT INTO TeaterSal (salNavn, antallPlasser) VALUES ('Hovedscenen', 516) ''')
+# cursor.execute(''' INSERT INTO TeaterSal (salNavn, antallPlasser) VALUES ('Gamle scene', 332) ''')
+# cursor.execute('''DELETE FROM TeaterSal''')
+
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS TeaterStykke (
         navnPaStykke TEXT NOT NULL,
