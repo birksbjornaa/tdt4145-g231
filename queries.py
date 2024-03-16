@@ -12,6 +12,7 @@ def playsOnDate(date):
                 INNER JOIN Forestilling ON TeaterStykke.navnPaStykke = Forestilling.navnPaStykke
                 INNER JOIN Billett ON Forestilling.navnPaStykke = Billett.navnPaStykke
         WHERE dato = ?
+        GROUP BY navnPaStykke
         ORDER BY antallBilletterSolgt DESC
     ''', (date,))
     return cursor.fetchall()
@@ -42,9 +43,18 @@ def getCoActors(name):
     if name == "": return "No name given"
     cursor.execute(''' 
         SELECT navn AS "Skuespiller", Medspiller.navn AS "Medspiller", navnPaStykke AS "Teaterstykke"
-        FROM Skuespiller
+        FROM (SELECT navn as "Skuespiller", akt, navnPaStykke
+                   FROM Skuespiller
+                       INNER JOIN SpillerRolle ON Skuespiller.personID = SpillerRolle.personID
+                       INNER JOIN RolleiAkt ON SpillerRolle.rolleID = RolleiAkt.rolleID
+                   WHERE navn = ?) AS SpillerAkt
+                   INNER JOIN (
+            SELECT SpillerRolle.personID, navn AS "Medspiller", navnPaStykke
+            FROM Skuespiller
             INNER JOIN SpillerRolle ON Skuespiller.personID = SpillerRolle.personID
             INNER JOIN RolleiAkt ON SpillerRolle.rolleID = RolleiAkt.rolleID
-            INNER JOIN Skuespiller AS Medspiller ON Medspiller.personID = SpillerRolle.personID
-        WHERE navn = ?
-    ''')
+        ) AS Medspiller ON SpillerAkt.navnPaStykke = Medspiller.navnPaStykke
+        WHERE Medspiller.Medspiller != ?
+    ''', (name, name))
+    #alt etter inner join er chat gpt
+    return cursor.fetchall()
