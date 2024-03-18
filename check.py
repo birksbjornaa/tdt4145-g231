@@ -111,9 +111,9 @@ cursor.execute('''
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS PrisListe (
         navnPaStykke TEXT NOT NULL,
-        billettType TEXT NOT NULL,
+        kundeGruppe TEXT NOT NULL,
         pris INTEGER NOT NULL,
-        PRIMARY KEY (navnPaStykke, billettType),
+        PRIMARY KEY (navnPaStykke, kundeGruppe),
         FOREIGN KEY (navnPaStykke) REFERENCES TeaterStykke(navnPaStykke) ON DELETE NO ACTION
     )
 ''')
@@ -123,12 +123,13 @@ cursor.execute('''
         ordreID INTEGER NOT NULL,
         kundeID INTEGER NOT NULL,
         navnPaStykke TEXT NOT NULL,
+        kundeGruppe TEXT NOT NULL,
         antallBilletter INTEGER NOT NULL,
         kjopsDato TEXT NOT NULL,
         kjopsTidspunkt TEXT NOT NULL,
         PRIMARY KEY (ordreID),
         FOREIGN KEY (kundeID) REFERENCES Kunde(kundeID) ON DELETE NO ACTION,
-        FOREIGN KEY (navnPaStykke) REFERENCES PrisListe(navnPaStykke) ON DELETE NO ACTION
+        FOREIGN KEY (navnPaStykke, kundeGruppe) REFERENCES PrisListe(navnPaStykke, kundeGruppe) ON DELETE NO ACTION
     )
 ''')
 
