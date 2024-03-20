@@ -43,17 +43,17 @@ def getCoActors(name):
     if name == "": return "No name given"
     cursor.execute(''' 
         SELECT navn AS "Skuespiller", Medspiller.navn AS "Medspiller", navnPaStykke AS "Teaterstykke"
-        FROM (SELECT navn as "Skuespiller", akt, navnPaStykke
+        FROM (SELECT navn as "Skuespiller", nummer, navnPaStykke
                    FROM Skuespiller
                        INNER JOIN SpillerRolle ON Skuespiller.personID = SpillerRolle.personID
                        INNER JOIN RolleiAkt ON SpillerRolle.rolleID = RolleiAkt.rolleID
                    WHERE navn = ?) AS SpillerAkt
                    INNER JOIN (
-            SELECT SpillerRolle.personID, navn AS "Medspiller", navnPaStykke
+            SELECT navn AS "Medspiller", nummer, navnPaStykke
             FROM Skuespiller
             INNER JOIN SpillerRolle ON Skuespiller.personID = SpillerRolle.personID
             INNER JOIN RolleiAkt ON SpillerRolle.rolleID = RolleiAkt.rolleID
-        ) AS Medspiller ON SpillerAkt.navnPaStykke = Medspiller.navnPaStykke
+        ) AS Medspiller ON SpillerAkt.navnPaStykke = Medspiller.navnPaStykke AND SpillerAkt.nummer = Medspiller.nummer
         WHERE Medspiller.Medspiller != ?
     ''', (name, name))
     #alt etter inner join er chat gpt
