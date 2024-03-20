@@ -45,7 +45,6 @@ def main():
                 for word in words:
                     if len(word) == 10 and word[4] == "-" and word[7] == "-":
                         date = word
-                        print(date) 
                         
 
             if "Galleri" in line:
@@ -63,7 +62,6 @@ def main():
                     for e in range(len(row_line)):
                         if row_line[e] == "1" :
                             seat_nr = seats_parkett - e
-                            print("Bought: seat" + str(seat_nr) +"  row: " + str(row))
                             cursor.execute('''INSERT INTO Billett(billettID, stolNr, radNr, omradeNavn, salNavn, dato, navnPaStykke, ordreID) VALUES (?, ?, ?, 'Parkett', 'Hovedscenen', '2024-02-03', 'Kongsemnene',  1 )''', (billettCount, seat_nr, row))
                             billettCount += 1
                     i += 1

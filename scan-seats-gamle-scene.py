@@ -43,7 +43,6 @@ def main():
                         a_sg = sg + 1
                         cursor.execute('''INSERT INTO Stol(stolNr, radNr, omradeNavn, salNavn) VALUES (?, ?, 'Galleri', 'Gamle scene')''',(a_sg, rg))
                         if next_line[sg] == '1':
-                            print("Bought: seat" + str(a_sg) +"  row: " + str(rg))
                             cursor.execute('''INSERT INTO Billett(billettID, stolNr, radNr, omradeNavn, salNavn, dato, navnPaStykke, ordreID) VALUES (?, ?, ?, 'Galleri', 'Gamle scene', '2024-02-03', 'Størst av alt er kjærligheten',  2 )''', (billettCount, a_sg, rg)) 
                             billettCount += 1
                     i += 1
@@ -59,7 +58,6 @@ def main():
                         a_sb = sb + 1
                         cursor.execute('''INSERT INTO Stol(stolNr, radNr, omradeNavn, salNavn) VALUES (?, ?, 'Balkong', 'Gamle scene')''',(a_sb, rb))
                         if next_line[sb] == '1':
-                            print("Bought: seat" + str(a_sb) +"  row: " + str(rb))
                             cursor.execute('''INSERT INTO Billett(billettID, stolNr, radNr, omradeNavn, salNavn, dato, navnPaStykke, ordreID) VALUES (?, ?, ?, 'Balkong', 'Gamle scene', '2024-02-03', 'Størst av alt er kjærligheten',  2 )''', (billettCount, a_sb, rb)) 
                             billettCount += 1
                     i += 1
@@ -74,7 +72,6 @@ def main():
                         a_sp = sp + 1
                         cursor.execute('''INSERT INTO Stol(stolNr, radNr, omradeNavn, salNavn) VALUES (?, ?, 'Parkett', 'Gamle scene')''',(a_sp, rp))
                         if next_line[sp] == '1':
-                            print("Bought: seat" + str(a_sp) +"  row: " + str(rp))
                             cursor.execute('''INSERT INTO Billett(billettID, stolNr, radNr, omradeNavn, salNavn, dato, navnPaStykke, ordreID) VALUES (?, ?, ?, 'Parkett', 'Gamle scene', '2024-02-03', 'Størst av alt er kjærligheten',  2 )''', (billettCount, a_sp, rp)) 
                             billettCount += 1
                     i += 1

@@ -16,5 +16,7 @@ The commands create and insert the requested information into a database file.
 3. python3 scan-seats-hovedscenen.py hovedscenen.txt
 
 4. python3 scan-seats-gamle-scene.py gamle-scene.txt
+
+5. python3 queries.py
 ```
 
