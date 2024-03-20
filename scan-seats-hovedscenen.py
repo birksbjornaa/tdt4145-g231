@@ -18,6 +18,11 @@ for a in range(1, 505):
     if a % 28 == 0:
         r += 1
 
+g = 1
+for e in range(505, 525):
+    cursor.execute('''INSERT INTO Stol(stolNr, radNr, omradeNavn, salNavn) VALUES (?, ?, 'Galleri', 'Hovedscenen')''',(e, g))
+    
+
 
 def main():
     if len(sys.argv) != 2:
