@@ -1,15 +1,13 @@
 # TDT4145_231
 
-
-
 ## Getting started
 
 When you are in the tdt4145_231 folder of this project you can run the commands listed below in the order they are sorted in.
 
-The commands create and insert the requested information into a database file. 
+The commands create and insert the requested information into a database file.
 
 ```
-1. python3 check.py
+1. python3 create.py
 
 2. python3 insert.py
 
@@ -19,4 +17,3 @@ The commands create and insert the requested information into a database file.
 
 5. python3 queries.py
 ```
-
