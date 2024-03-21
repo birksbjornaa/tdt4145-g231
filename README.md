@@ -35,7 +35,11 @@ In order to check for plays on other dates than March 3rd 2024, or for the co ac
 5. python3 queries.py
 ```
 
-## Kommentar
+### Comment
+
+The group's experience with SQL is by using db Browser for SQLite, and when using that, running python3 create.py after opening the database does not show any changes. However, if the database is opened in db Browser after the first command is run in the terminal, the updates are visible after changing viewed table.
+
+## Kommentar til oppgavegjennomføring
 
 Vi har gjort prosjektet slik at vi har oppfylt kravene akkurat slik de står. Dette innebærer at vi i SQL spørringene har forbestemt hvilken input som gis. Altså vi har gitt inn en dato hvor forestillingene som spilles denne dagen hentes ut, vi har gitt et navn hvor det hentes ut alle co-actors.
 
