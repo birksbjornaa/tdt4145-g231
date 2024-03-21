@@ -57,25 +57,26 @@ def getCoActors(name):
 
 def buySeats():
     cursor.execute(''' 
-        SELECT stolNr, radNr, omradeNavn
+        SELECT  radNr, omradeNavn, COUNT(stolNr) AS antall
         FROM Stol
         WHERE (stolNr, radNr, omradeNavn) NOT IN (
             SELECT stolNr, radNr, omradeNavn
             FROM Billett
             WHERE Dato = '03-02-2024')
             AND salNavn = 'Gamle scene' 
-        GROUP BY radNr, omradeNavn                      
+        GROUP BY radNr, omradeNavn                         
     ''')
 
     ledigeseter = cursor.fetchall()
+    print(ledigeseter)
     
     query = True
     i = 0
     while query:
         line = ledigeseter[i]
-        if int(line[0]) > 9:
-            radnr = line[1]
-            omrade = line[2]
+        if int(line[2]) > 9:
+            radnr = line[0]
+            omrade = line[1]
             cursor.execute('''
                 SELECT stolNr, radNr, omradeNavn 
                 FROM (SELECT stolNr, radNr, omradeNavn
@@ -90,6 +91,8 @@ def buySeats():
             rad = cursor.fetchall()
             query = False
         i += 1
+        if i > len(ledigeseter):
+            query = False
 
     cursor.execute(''' INSERT INTO Ordre(ordreID, kundeID, navnPaStykke, kundeGruppe, antallBilletter, kjopsDato, kjopsTidspunkt) VALUES (3, 1, 'Størst av alt er kjærligheten', 'Ordinær', 9, '2024-01-03', '1200') ''')
 
