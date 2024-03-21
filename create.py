@@ -1,7 +1,7 @@
 import sqlite3
 
 #endre filnavn til create.py
-con = sqlite3.connect('sjekk.db') #endre til feks database.db, la være tom
+con = sqlite3.connect('trondelagteater.db') #endre til feks database.db, la være tom
 con.execute('PRAGMA foreign_keys = ON')
 cursor = con.cursor()
 

@@ -1,6 +1,6 @@
 import sqlite3
 # Connect to the SQLite database
-con = sqlite3.connect('sjekk.db')
+con = sqlite3.connect('trondelagteater.db')
 con.execute('PRAGMA foreign_keys = ON')
 cursor = con.cursor()
 
