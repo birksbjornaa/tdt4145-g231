@@ -68,7 +68,6 @@ def buySeats():
     ''')
 
     ledigeseter = cursor.fetchall()
-    print(ledigeseter)
     
     query = True
     i = 0
@@ -96,18 +95,27 @@ def buySeats():
 
     cursor.execute(''' INSERT INTO Ordre(ordreID, kundeID, navnPaStykke, kundeGruppe, antallBilletter, kjopsDato, kjopsTidspunkt) VALUES (3, 1, 'Størst av alt er kjærligheten', 'Ordinær', 9, '2024-01-03', '1200') ''')
 
+    cursor.execute('''
+        SELECT pris * Ordre.antallBilletter AS totalPris
+        FROM Ordre
+            INNER JOIN Prisliste ON Ordre.navnPaStykke = Prisliste.navnPaStykke AND Ordre.kundeGruppe = Prisliste.kundeGruppe
+        WHERE ordreID = 3
+    ''')
+    totalPris = cursor.fetchone()
+
     billettID = 93
+    print("   Total price: " + str(totalPris[0]) + "\n")
     for i in range(0, 9):
         kjopStol = rad[i]
         cursor.execute('''
             INSERT INTO Billett(billettID, stolNr, radNr, omradeNavn, salNavn, dato, navnPaStykke, ordreID) VALUES (?, ?, ?, ?, 'Gamle scene', '2024-02-03', 'Størst av alt er kjærligheten', 3)
         ''', (billettID, kjopStol[0], kjopStol[1], kjopStol[2]))
-        print("   Bought stolNr: " + str(kjopStol[0]) + " on row: " + str(kjopStol[1]) + "   in hall: " + kjopStol[2])
+        print("   Bought stolNr: " + str(kjopStol[0]) + " on row: " + str(kjopStol[1]) + "   in area: " + kjopStol[2])
         
         billettID += 1
             
 
-    return rad
+    return rad, totalPris
 
 
 

@@ -41,6 +41,10 @@ The group's experience with SQL is by using db Browser for SQLite, and when usin
 
 ## Kommentar til oppgavegjennomføring
 
+Programmet vi har skrevet er statisk, som innebærer at det kun kan kjøres én gang, og at kommandoene må kjøres i riktig rekkefølge. I buySeats() har vi blant annet definert i Where-løkka hvilken teatersal stolene er i, fordi vi ut i fra oppgaven vet hvilke seter som må kjøpes for å ha billetter til riktig forestilling.
+
 Vi har gjort prosjektet slik at vi har oppfylt kravene akkurat slik de står. Dette innebærer at vi i SQL spørringene har forbestemt hvilken input som gis. Altså vi har gitt inn en dato hvor forestillingene som spilles denne dagen hentes ut, vi har gitt et navn hvor det hentes ut alle co-actors.
 
 Hvilken input som gis kan endres i koden. Vi har valgt å ikke bruke tid på å lage et python program hvor brukeren kan spørre fritt og gi input på hva den vil hente ut, da vi valgte å prioritere at spørringene fungerte. Følgelig er ikke programmet spesielt brukervennlig/interaktivt.
+
+Årsaken til denne prioriteringen av innsats er at det i leveransebeskrivelsen står skrevet "Husk at poenget med oppgaven er å lage modeller, skrive SQL og gjøre databaseaksess fra Python"
