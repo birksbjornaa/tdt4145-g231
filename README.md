@@ -48,3 +48,5 @@ Vi har gjort prosjektet slik at vi har oppfylt kravene akkurat slik de står. De
 Hvilken input som gis kan endres i koden. Vi har valgt å ikke bruke tid på å lage et python program hvor brukeren kan spørre fritt og gi input på hva den vil hente ut, da vi valgte å prioritere at spørringene fungerte. Følgelig er ikke programmet spesielt brukervennlig/interaktivt.
 
 Årsaken til denne prioriteringen av innsats er at det i leveransebeskrivelsen står skrevet "Husk at poenget med oppgaven er å lage modeller, skrive SQL og gjøre databaseaksess fra Python"
+
+PlaysOnDate er ikke helt korrekt. Vi har også en metode noTicketsSold, men de er ikke i en funksjon. Selv om begge delene av oppgaven er oppfylt.

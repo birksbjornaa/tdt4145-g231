@@ -14,7 +14,8 @@ def playsOnDate(date):
         WHERE Forestilling.dato = ? 
         GROUP BY TeaterStykke.navnPaStykke
     ''', (date,))
-    return cursor.fetchall()
+    onDate = cursor.fetchall()
+    return onDate
 
 
 def getAllActors():
@@ -33,6 +34,18 @@ def mostPopularPerformance():
         FROM Billett
         GROUP BY Billett.dato, Billett.navnPaStykke
         ORDER BY antallBilletterSolgt DESC
+    ''')
+    popular = cursor.fetchall()
+    return popular
+
+
+def noTicketsSold():
+    cursor.execute(''' 
+        SELECT Forestilling.navnPaStykke, Forestilling.dato, count(billettID) AS antallBilletterSolgt
+        FROM Forestilling
+            LEFT OUTER JOIN Billett ON Forestilling.dato = Billett.dato AND Forestilling.navnPaStykke = Billett.navnPaStykke
+        GROUP BY Forestilling.dato, Forestilling.navnPaStykke
+        HAVING antallBilletterSolgt = 0
     ''')
     return cursor.fetchall()
 
@@ -152,6 +165,11 @@ def main():
         print("   Stykke: " + str(stykkke) + "  Dato: " + str(date) + "    Antall solgt: " + str(solgt))
 
 
+    # Call noTicketsSold function
+    print("\nNo Tickets Sold:\n")
+    noList = noTicketsSold()
+    for row in noList:
+        print('   Stykke: ' + row[0] + '  Dato: ' + row[1] + '  Antall solgt: ' + str(row[2]) + '\n')
 
     # Call getCoActors function
     actor = "Sunniva Du Mond Nordal"
