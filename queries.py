@@ -146,7 +146,7 @@ def main():
     actor = "Sunniva Du Mond Nordal"
     coList = getCoActors(actor)
     stykke = coList[0][1]
-    print("\nCo-Actors of " + actor + " in the play " + stykke + "\n")
+    print("\nCo-Actors of " + actor + " in the play " + stykke + ":\n")
 
     for d in range(len(coList)):
         linje = coList[d]
