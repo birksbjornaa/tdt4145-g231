@@ -1,6 +1,5 @@
 Oppskrift for å kjøre programmet finnes i README.md-filen
 
-
 Output fra queries:
 
 Plays on given Date:
@@ -112,7 +111,7 @@ Most Popular Performance:
    Stykke: Kongsemnene  Dato: 2024-02-03    Antall solgt: 65
    Stykke: Størst av alt er kjærligheten  Dato: 2024-02-03    Antall solgt: 27
 
-Co-Actors of Sunniva Du Mond Nordal in the play Størst av alt er kjærligheten:
+Co-Actors of Sunniva Du Mond Nordal (in the play Størst av alt er kjærligheten):
 
     - Jo Saberniak
     - Marte M. Steinholt
